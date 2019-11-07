@@ -1,15 +1,10 @@
-package main.pat.day1.title1018;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 
 public class Main {
-
-
     public String getOptimal(int[] array,int winByC,int winByJ,int winByB){
-        //从小到大排序，冒泡法
         for(int i=0;i<array.length;i++){
             for(int j=0;j<array.length-1-i;j++){
                 if(array[j]>array[j+1]){
@@ -32,18 +27,18 @@ public class Main {
                 optimalChoice="B";
             }
         }
-        else{//arr[2]=arr[1]           因为arr[2]<=arr[1],排过序了，<不可能
+        else{
             if(array[2]==array[1]&&array[1]==array[0]){
                 optimalChoice ="B";
             }
-            else{//arr[2]=arr[1] &&array[1] > array[0]
-                if(array[0]==winByC){//赢的次数最小的锤子，另外两种赢的次数相同
+            else{
+                if(array[0]==winByC){
                     optimalChoice="B";
                 }
-                if(array[0]==winByJ){//赢的次数最小的剪刀，另外两种赢的次数相同
+                if(array[0]==winByJ){
                     optimalChoice="B";
                 }
-                if(array[0]==winByB){//赢的次数最小的布，另外两种赢的次数相同
+                if(array[0]==winByB){
                     optimalChoice="C";
                 }
             }
@@ -79,6 +74,9 @@ public class Main {
         char[] arr =null;
         for(int i=0 ;i<n ;i++){
 
+
+
+
             try {
                 arr=br.readLine().toCharArray();
             } catch (IOException e) {
@@ -93,11 +91,9 @@ public class Main {
             if(arr[0]=='B'&&arr[2]=='C'){
                 winByB_jia++;
             }
-
             if(arr[0]==arr[2]){
                 draw_jia++;
             }
-
             if(arr[2]=='C'&&arr[0]=='J'){
                 winByC_yi++;
             }
@@ -111,13 +107,11 @@ public class Main {
         win_jia =winByC_jia+winByJ_jia+winByB_jia;
         lose_jia=winByC_yi+winByJ_yi+winByB_yi;
         Main test =new Main();
-
         int[] array1 =new int[3];
         array1[0]=winByC_jia;array1[1]=winByJ_jia;array1[2]=winByB_jia;
         String optimalChoice_jia=test.getOptimal(array1, winByC_jia, winByJ_jia, winByB_jia);
         array1[0]=winByC_yi;array1[1]=winByJ_yi;array1[2]=winByB_yi;
         String optimalChoice_yi=test.getOptimal(array1, winByC_yi, winByJ_yi, winByB_yi);
-
         System.out.println(win_jia+" "+draw_jia+" "+lose_jia);
         System.out.println(lose_jia+" "+draw_jia+" "+win_jia);
         System.out.print(optimalChoice_jia+" "+optimalChoice_yi);
