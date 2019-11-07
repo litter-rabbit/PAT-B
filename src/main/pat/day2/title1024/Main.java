@@ -1,8 +1,8 @@
 package main.pat.day2.title1024;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+        import java.io.BufferedReader;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -28,15 +28,25 @@ public class Main {
         }
         else{
 
-            
+            System.out.print(s[0].charAt(0));
+            int cnt=0;
+            int j;
+            for(j=2;j<s[0].length()&&cnt<n;j++,cnt++){
+                System.out.print(s[0].charAt(j));
+            }
+            if(j==s[0].length()){
+                for(int k=0;k<n-cnt;k++){
+                    System.out.print("0");
 
+                }
+            }
+            else{
+                System.out.print(".");
+                for(int k=j;k<s[0].length();k++){
+                    System.out.print(s[0].charAt(k));
+                }
+            }
         }
-
-
-
-
-
-
     }
 
 }
