@@ -8,79 +8,33 @@ import java.util.Collections;
 import java.util.List;
 
 public class Main {
-    public static class Person implements Comparable<Person>{
-        String name;
-        private int year;
-        private int month;
-        private int days;
-
-        public Person(String name, int year, int month, int days) {
-            this.name = name;
-            this.year = year;
-            this.month = month;
-            this.days = days;
-        }
-
-        @Override
-        public int compareTo(Person person) {
-            if(person.year!=this.year){
-                return this.year-person.year;
-            }
-            else{
-                if(person.month!=this.month){
-                    return this.year-person.year;
-                }
-                else{
-                    return this.days-person.days;
-                }
-            }
-
-        }
-    }
-
     public static void main(String[] args) throws IOException {
-
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        List<Person> list = new ArrayList<>();
+        String maxname="",minname="";
+        String maxbirth="1814/09/06";
+        String minbirth="2014/9/6";
+        int count=0;
         for(int i=0;i<n;i++){
-            String[] s = br.readLine().split(" ");
-            String name = s[0];
-            String[] s1=s[1].split("/");
-            int year = Integer.parseInt(s1[0]);
-            int month = Integer.parseInt(s1[1]);
-            int day = Integer.parseInt(s1[2]);
-            if (isvalid(year,month,day)) {
-
-                list.add(new Person(name, year, month, day));
+            String[] s=br.readLine().split(" ");
+            if(s[1].compareTo("1814/09/06")>=0&&s[1].compareTo("2014/9/6")<=0){
+                count++;
+                if(s[1].compareTo(maxbirth)>=0){
+                    maxbirth = s[1];
+                    maxname = s[0];
+                }
+                if(s[1].compareTo(minbirth)<=0){
+                    minbirth = s[1];
+                    minname = s[0];
+                }
             }
         }
-        Collections.sort(list);
-
-        System.out.print(list.size()+" "+list.get(0).name+" "+list.get(list.size()-1).name);
-    }
-
-    public static boolean isvalid(int year,int month,int day){
-
-        if(year<1814||year>2014){
-            return false;
+        System.out.println(count);
+        if(count!=0){
+            System.out.print(minname+" "+maxname);
         }
-        if(year==1814){
-            if(month<9)return false;
-            if(month==9){
-                if(day<6)return false;
-            }
-        }
-      if(year==2014){
-          if(month>9)return false;
-          if(month==9){
-              if(day>6){
-                  return false;
-              }
-          }
-      }
-      return true;
+
+
     }
 
 }

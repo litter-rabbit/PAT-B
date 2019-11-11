@@ -14,7 +14,6 @@ public class Main {
         int secound = (int) secoundsum;
         double onesecound = (secoundsum-secound)>=0.5?1:0;
         secound+=onesecound;
-
         int hour=secound/3600;
         secound=secound%3600;
         int minute=secound/60;
