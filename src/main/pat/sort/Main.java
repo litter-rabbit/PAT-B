@@ -112,10 +112,7 @@ public class Main {
                     a[j-1]=temp;
                 }
             }
-
         }
-
-
     }
 
 
