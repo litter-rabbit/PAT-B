@@ -22,9 +22,9 @@ public class Main {
             if (sort.containsKey(temp2)) {
                 int index=sort.get(temp2);
                 if(checked[index]==0){
-                    if(sort.get(temp2)==1){
+                    if(index==1){
                         System.out.println(temp2+": "+"Mystery Award");
-                    } else if (isprimer(sort.get(temp2))) {
+                    } else if (isprimer(index)) {
                         System.out.println(temp2+": "+"Minion");
                     }
                     else{
@@ -37,13 +37,15 @@ public class Main {
                 }
             }
             else{
-                System.out.println(temp2+": "+" Are you kidding?");
+                System.out.println(temp2+": "+"Are you kidding?");
             }
         }
-
     }
 
     public static boolean isprimer(int num){
+        if(num<=1){
+            return false;
+        }
         for(int i=2;i<=Math.sqrt(num);i++){
             if(num%i==0){
                 return false;
